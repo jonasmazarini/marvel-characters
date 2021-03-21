@@ -17,7 +17,7 @@ export default function Header({ showSearch }) {
   }, [search]);
 
   return (
-    <section>
+    <section className='header'>
       
       {showSearch && (
         <div className="searchContainer">
@@ -26,6 +26,7 @@ export default function Header({ showSearch }) {
             onChange={e => setSearch(e.target.value)}
             value={search}
             placeholder="Pesquise um Personagem"
+            className="searchInput"
           />
         </div>
       )}

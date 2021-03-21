@@ -1,0 +1,20 @@
+.cardContainer{
+    height: 200px;
+    width: 160px;
+    background-color: #808080;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px;
+    margin: 6px;
+    border: 3px solid black;
+}
+
+.characterName {
+    height: 40px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.characterImage {
+    height: 150px;
+}

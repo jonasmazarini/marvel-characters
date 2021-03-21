@@ -1,60 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import CardSerie from "../../components/Comics-card/Comics-card";
+import React from "react";
 import Header from "../../components/Header/Header";
-import characterActions from "../../store/actions/index";
 import "./Profiles.css";
+import logo from "../../assets/header-image.jpg";
 
-export default function Character() {
-  const { characterId } = useParams();
-  const [data, setData] = useState({});
-  const { Character } = useSelector((state) => ({
-    Character: state.character,
-  }));
-  Character.then((response) => setData(response));
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const getCharacter = () => {
-      dispatch(characterActions.requestGetCharacterId(characterId));
-    };
-    getCharacter();
-  }, []);
-
+const Profile = ({ id, name, thumbnail, extension, description }) => {
   return (
     <>
-      <Header />
       <section>
-        <div className="profile">
-          <div className="title">Personagem</div>
-          <div className="profileContent">
-            {data?.dataUser?.map((response) => (
-              <div key={response?.id}>
-                <img
-                  src={`${response?.thumbnail?.path}.${response?.thumbnail?.extension}`}
-                  alt={response?.name}
-                />
-                <span className="name">{response?.name}</span>
-                <span>{response?.description}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="comics">
-          <div className="title">Revistas</div>
-          <div className="comicsContent">
-            {data?.data?.length !== 0 ? (
-              data?.dataSeries?.map((response) => (
-                <CardSerie data={response} key={response?.id} />
-              ))
-            ) : (
-              <p text="Não encontrada nenhuma revista.." />
-            )}
-          </div>
+        <Header />
+        <div className="profileContainer">
+          <img src={logo} alt="logo" className="characterImage" />
+          <h2 className="characterName">Lorem ipsum</h2>
+          <p className="characterDescription">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
         </div>
       </section>
     </>
   );
-}
+};
+
+export default Profile;

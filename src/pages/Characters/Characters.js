@@ -1,38 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import characterCard from "../../components/Character-card/Character-card";
+import React from "react";
 import Header from "../../components/Header/Header";
-import characterActions from "../../store/actions/index";
+import { useCharacter } from "../../core/useCharacter";
+import CardList from "../../components/CardList";
 import "./Characters.css";
 
 export default function Characters() {
-  const [data, setData] = useState({});
-  const { Character } = useSelector((state) => ({
-    Characer: state.character,
-  }));
-  Character.then((response) => setData(response));
+  const { data } = useCharacter();
+  let results = [];
+  if (data !== "empty") {
+    results = data.data.data.results;
+  }
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const getCharacter = () => {
-      dispatch(characterActions.requestGetCharacter());
-    };
-    getCharacter();
-  }, []);
-
+  console.log("Dados: ", data);
+  console.log("Results: ", results);
   return (
     <>
-      <Header showSearch />
       <section>
-        {data?.data?.length !== 0 ? (
-          data?.data?.map((dataMap) => {
-            return <characterCard data={dataMap} key={dataMap.id} />;
-          })
-        ) : (
-          <p />
-        )}
+        <Header showSearch />
       </section>
+      <CardList characters={results} />
     </>
   );
 }

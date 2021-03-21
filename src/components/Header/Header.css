@@ -1,0 +1,21 @@
+.header {
+    height: 130px;
+    width: 100%;
+    background-image: url("../../assets/header-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchInput {
+    height: 35px;
+    margin-top: 50px;
+    font-size: large;
+    font-weight: bold;
+}

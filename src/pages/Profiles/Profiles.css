@@ -1,0 +1,20 @@
+.profileContainer {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.characterImage {
+}
+
+.characterName {
+  color: ivory;
+  font-size: xx-large;
+}
+
+.characterDescription {
+}
