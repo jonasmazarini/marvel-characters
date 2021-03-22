@@ -31,6 +31,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [React](https://pt-br.reactjs.org/)
 - [Redux](https://redux.js.org/)
 
+### 🔗 Deploy
+- [Vercel](https://jonasmazarini-marvel-characters.vercel.app/)
+
 ### 🚧 Tarefas
 
 ✅ Lista de Personagens
