@@ -1,29 +1,22 @@
 import React from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header";
+import { useCharacterByID } from "../../core/useCharacter";
+import ProfileCard from "../../components/ProfileCard";
 import "./Profiles.css";
-import logo from "../../assets/header-image.jpg";
 
-const Profile = ({ id, name, thumbnail, extension, description }) => {
+// Create a profile page of the especific character when the user click on its card on the initial page (still not working)
+export default function Profile({ ...props }) {
+  const { profile } = useCharacterByID(props.match.params.characterId);
+  let results = [];
+  if (profile !== "empty") {
+    results = profile.data.data.results;
+  }
   return (
     <>
       <section>
         <Header />
-        <div className="profileContainer">
-          <img src={logo} alt="logo" className="characterImage" />
-          <h2 className="characterName">Lorem ipsum</h2>
-          <p className="characterDescription">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
       </section>
+      <ProfileCard profile={results} />
     </>
   );
-};
-
-export default Profile;
+}

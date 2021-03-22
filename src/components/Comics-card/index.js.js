@@ -1,0 +1,1 @@
+//To create the list of the comics card on the Profile page

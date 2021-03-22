@@ -1,22 +1,20 @@
 import React from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header";
 import { useCharacter } from "../../core/useCharacter";
 import CardList from "../../components/CardList";
 import "./Characters.css";
 
-export default function Characters() {
+// Create the initial page, with the header and a list of the characters
+export default function Characters({ ...props }) {
   const { data } = useCharacter();
   let results = [];
   if (data !== "empty") {
     results = data.data.data.results;
   }
-
-  console.log("Dados: ", data);
-  console.log("Results: ", results);
   return (
     <>
       <section>
-        <Header showSearch />
+        <Header />
       </section>
       <CardList characters={results} />
     </>
